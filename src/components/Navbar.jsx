@@ -1,17 +1,17 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const menuList = [
-    "여성",
-    "Divided",
-    "남성",
-    "신생아/유아",
-    "아동",
-    "H&M Home",
-    "Sale",
-    "지속가능",
+    "Women",
+    "Men",
+    "Baby",
+    "Kids",
+    "Home",
   ];
 
   return (
@@ -19,11 +19,15 @@ const Navbar = () => {
       <div className="login-button-div">
         <button>
           <FontAwesomeIcon icon={faUser} className="login-icon" />
-          로그인
+          <span>로그인</span>
         </button>
+        <div className="search-div-media">
+          <FontAwesomeIcon icon={faSearch} className="search-icon" />
+          <input type="text" placeholder="검색" />
+        </div>
       </div>
       <div className="logo">
-        <img
+        <img onClick={() => navigate("/")}
           src="https://images.seeklogo.com/logo-png/6/2/hm-logo-png_seeklogo-64496.png"
           alt="logo"
         />
@@ -34,7 +38,10 @@ const Navbar = () => {
             <li key={index}>{menu}</li>
           ))}
         </ul>
-
+        <div className="search-div">
+          <FontAwesomeIcon icon={faSearch} className="search-icon" />
+          <input type="text" placeholder="검색" />
+        </div>
       </div>
     </div>
   );
