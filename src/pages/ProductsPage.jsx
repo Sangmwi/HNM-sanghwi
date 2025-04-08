@@ -4,36 +4,23 @@ import ProductCard from '@/components/ProductCard'
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-
   const getProducts = async () => {
-    let url = `https://my-json-server.typicode.com/sangmwi/HNM-sanghwi/products?q=${searchQuery}`;
+    let url = `https://my-json-server.typicode.com/sangmwi/HNM-sanghwi/products`;
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
     setProducts(data);
   }
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
   useEffect(() => {
     getProducts();
-  }, [searchQuery]);
+  }, [])
   
 
 
 
   return (
-    <div className='product-list'>
-      <input
-        type='text'
-        placeholder='검색...'
-        value={searchQuery}
-        onChange={handleSearchChange}
-        style={{ marginBottom: '20px', padding: '10px', width: '100%' }}
-      />
+    <div className='product-list' style={{ width: '80%', margin: '0 auto' }}>
       {products.map((item, index) => (
           <ProductCard item={item} key={index} />
       ))}
