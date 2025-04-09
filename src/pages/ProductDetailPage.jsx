@@ -68,9 +68,7 @@ const ProductDetailPage = () => {
             <div className="product-description">
               <h3>상품 설명</h3>
               <p>
-                {product.title}은(는) 고품질 소재로 제작된 제품입니다. 
-                편안한 착용감과 세련된 디자인으로 일상적인 스타일링에 
-                완벽하게 어울립니다.
+                {product.title}은(는) 매우 좋은 제품입니다.
               </p>
             </div>
           </div>

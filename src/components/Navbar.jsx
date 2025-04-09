@@ -42,7 +42,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, onSearch, initialSearchQuery }) => 
   };
 
   return (
-    <div className="navbar">
+    <nav className="navbar">
       <div className="login-button-div">
         {isLoggedIn ? (
           <button onClick={handleLogout}>
@@ -57,6 +57,11 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, onSearch, initialSearchQuery }) => 
             </button>
           </Link>
         )}
+        <div className="search-div-media">
+          <div className="search-icon" onClick={toggleSearch}>
+            <FontAwesomeIcon icon={faSearch} />
+          </div>
+        </div>
       </div>
       <div className="logo">
         <Link to="/">
@@ -83,16 +88,11 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, onSearch, initialSearchQuery }) => 
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </form>
-        <div className="search-div-media">
-          <div className="search-icon" onClick={toggleSearch}>
-            <FontAwesomeIcon icon={faSearch} />
-          </div>
-        </div>
       </div>
       <form className={`search-form-mobile ${isSearchVisible ? 'active' : ''}`} onSubmit={handleSearch}>
-        <input 
-          type="text" 
-          placeholder="검색" 
+        <input
+          type="text"
+          placeholder="검색"
           value={searchQuery}
           onChange={handleSearchChange}
           autoFocus
@@ -101,7 +101,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, onSearch, initialSearchQuery }) => 
           <FontAwesomeIcon icon={faTimes} />
         </button>
       </form>
-    </div>
+    </nav>
   );
 };
 

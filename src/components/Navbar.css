@@ -1,5 +1,4 @@
 .navbar {
-  position: sticky;
   top: 0;
   background-color: white;
   z-index: 1000;
@@ -105,6 +104,17 @@
   display: none;
 }
 
+.search-icon {
+  cursor: pointer;
+  padding: 8px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.search-icon:hover {
+  color: #666;
+}
+
 .search-form-mobile {
   position: fixed;
   top: 0;
@@ -171,16 +181,19 @@
   color: #000;
 }
 
-.search-icon {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.search-icon:hover {
-  transform: scale(1.1);
-}
-
 @media (max-width: 768px) {
+
+
+  .navbar {
+    margin: 0;
+  }
+
+  .login-button-div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
   .login-button-div button span {
     display: none;
   }
@@ -192,7 +205,6 @@
   .search-div-media {
     display: flex;
     align-items: center;
-    position: relative;
   }
 
   .menu-list {
