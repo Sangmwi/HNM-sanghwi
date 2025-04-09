@@ -1,7 +1,6 @@
-
 import './App.css'
 import { useState, useEffect } from 'react'
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import ProductsPage from './pages/ProductsPage'
 import LoginPage from './pages/LoginPage'
 import ProductDetailPage from './pages/ProductDetailPage'
@@ -20,27 +19,52 @@ import Navbar from './components/Navbar'
 
 
 
-function App() {
-
+function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+  const location = useLocation()
   const navigate = useNavigate()
+  const [searchQuery, setSearchQuery] = useState('')
 
+  useEffect(() => {
+    // URL 쿼리 파라미터에서 검색어 가져오기
+    const params = new URLSearchParams(location.search)
+    const query = params.get('q') || ''
+    setSearchQuery(query)
+  }, [location.search])
+
+  const handleSearch = (query) => {
+    // 검색어가 있으면 쿼리 파라미터 추가, 없으면 제거
+    if (query) {
+      navigate(`/?q=${encodeURIComponent(query)}`)
+    } else {
+      navigate('/')
+    }
+  }
 
   return (
-    <>
-      <Navbar />
+    <div className="App">
+      <Navbar 
+        isLoggedIn={isLoggedIn} 
+        setIsLoggedIn={setIsLoggedIn}
+        onSearch={handleSearch}
+        initialSearchQuery={searchQuery}
+      />
       <Routes>
-        <Route path="/" element={<ProductsPage />} />
-        <Route path="/home" element={<ProductsPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/product/:id" element={isLoggedIn? <ProductDetailPage /> : <Navigate to="/login"/>} />
+        <Route path="/" element={<ProductsPage searchQuery={searchQuery} />} />
+        <Route path="/home" element={<ProductsPage searchQuery={searchQuery} />} />
+        <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/product/:id" element={<ProductDetailPage isLoggedIn={isLoggedIn} />} />
       </Routes>
-      
-    </>
-
+    </div>
   )
+}
 
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  )
 }
 
 export default App
