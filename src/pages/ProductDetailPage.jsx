@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 import LoadingSpinner from '../components/LoadingSpinner'
 import './ProductDetailPage.css'
 
-const ProductDetailPage = () => {
+const ProductDetailPage = ({ isLoggedIn }) => {
   const { id } = useParams()
   const [product, setProduct] = useState(null)
   const [selectedSize, setSelectedSize] = useState('')
@@ -18,6 +18,7 @@ const ProductDetailPage = () => {
     getProductDetail()
   }, [id])
 
+  if (!isLoggedIn) return <Navigate to="/login" />
   if (!product) return <LoadingSpinner />
 
   return (
