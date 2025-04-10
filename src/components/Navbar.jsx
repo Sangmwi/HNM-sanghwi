@@ -49,7 +49,7 @@ const Navbar = ({
     <nav className="navbar">
       <div className="top-bar">
         <div className="left-side">
-          <div className={`slide-menu ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+          <div className={`mobile-menu-list slide-menu ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
             <ul>
               {menuList.map((menu, index) => (
                 <li key={index}>{menu}</li>
@@ -91,7 +91,12 @@ const Navbar = ({
           />
         </Link>
       </div>
-      <div className="menu-and-search">
+      <div className="desktop-menu-list menu-and-search">
+        <ul>
+          {menuList.map((menu, index) => (
+            <li key={index}>{menu}</li>
+          ))}
+        </ul>
         <form className="search-form" onSubmit={handleSearch}>
           <input
             type="text"

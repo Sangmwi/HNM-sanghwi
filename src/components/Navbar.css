@@ -84,19 +84,28 @@
   cursor: pointer;
 }
 
-.menu-list {
+.desktop-menu-list, .mobile-menu-list {
   display: flex;
-  gap: 25px;
   list-style: none;
+  gap: 50px;
+  padding: 0;
 }
 
-.menu-list li {
+.desktop-menu-list ul{
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  padding: 0;
+}
+
+.desktop-menu-list li, .mobile-menu-list li {
   cursor: pointer;
   transition: transform 0.3s ease;
   text-align: center;
+  list-style: none;
 }
 
-.menu-list li:hover {
+.desktop-menu-list li:hover, .mobile-menu-list li:hover {
   text-shadow: 0 0 0.5px currentColor;
 }
 
@@ -265,6 +274,14 @@
   .search-div-media {
     display: flex;
     align-items: center;
+  }
+
+  .desktop-menu-list {
+    display: none;
+  }
+
+  .mobile-menu-list {
+    display: flex;
   }
 }
 
