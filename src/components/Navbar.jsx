@@ -86,7 +86,7 @@ const Navbar = ({
       <div className="logo">
         <Link to="/">
           <img
-            src="https://images.seeklogo.com/logo-png/6/2/hm-logo-png_seeklogo-64496.png"
+            src="https://atelierbundi.ch/wp-content/uploads/2016/06/Logo-SHS-architects-Bundi.png"
             alt="logo"
           />
         </Link>

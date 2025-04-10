@@ -11,6 +11,7 @@
     flex-wrap: wrap;
     margin: 30px;
     width: 80%;
+    transition: opacity 0.3s ease;
 }
 
 .product-card {
@@ -20,7 +21,7 @@
     justify-content: center;
     gap: 1px;
     width: calc(25% - 10px);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .product-card img {
@@ -44,10 +45,19 @@
     font-weight: 400;
 }
 
-.product-card:hover {
+
+.product-list:hover .product-card{
+    opacity: 0.8;
+}
+
+.product-list .product-card:hover {
     transform: scale(1.05);
     text-shadow: 0 0 0.5px currentColor;
+    z-index: 1;
+    opacity: 1;
 }
+
+
 
 @media (max-width: 768px) {
     .product-card {
